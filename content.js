@@ -1,6 +1,6 @@
 function injectCSS() {
-    const style = document.createElement('style');
-    style.textContent = `
+  const style = document.createElement('style');
+  style.textContent = `
       @keyframes spinner {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
@@ -28,40 +28,40 @@ function injectCSS() {
         animation: spinner 1s linear infinite;
       }
     `;
-    document.head.append(style);
+  document.head.append(style);
 }
 
 function showSpinner() {
-    // injectCSS();
+  // injectCSS();
 
-    const spinnerOverlay = document.createElement('div');
-    spinnerOverlay.className = 'spinner-overlay';
-    const spinner = document.createElement('div');
-    spinner.className = 'spinner';
-    spinnerOverlay.appendChild(spinner);
-    document.body.appendChild(spinnerOverlay);
+  const spinnerOverlay = document.createElement('div');
+  spinnerOverlay.className = 'spinner-overlay';
+  const spinner = document.createElement('div');
+  spinner.className = 'spinner';
+  spinnerOverlay.appendChild(spinner);
+  document.body.appendChild(spinnerOverlay);
 }
 
 function hideSpinner() {
-    const spinnerOverlay = document.querySelector('.spinner-overlay');
-    if (spinnerOverlay) {
-        spinnerOverlay.remove();
-    }
+  const spinnerOverlay = document.querySelector('.spinner-overlay');
+  if (spinnerOverlay) {
+    spinnerOverlay.remove();
+  }
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "showSpinner") {
-        showSpinner();
-    } else if (request.action === "hideSpinner") {
-        hideSpinner();
-    } else if (request.action === "replaceText") {
-        const selection = window.getSelection();
-        if (!selection.rangeCount) return;
+  if (request.action === "showSpinner") {
+    showSpinner();
+  } else if (request.action === "hideSpinner") {
+    hideSpinner();
+  } else if (request.action === "replaceText") {
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return;
 
-        const range = selection.getRangeAt(0);
-        range.deleteContents();
+    const range = selection.getRangeAt(0);
+    range.deleteContents();
 
-        const textNode = document.createTextNode(request.newText);
-        range.insertNode(textNode);
-    }
+    const textNode = document.createTextNode(request.newText);
+    range.insertNode(textNode);
+  }
 });

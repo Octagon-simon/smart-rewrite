@@ -1,39 +1,49 @@
 {
-    "manifest_version": 3,
-    "name": "Text Rewriter",
-    "version": "1.0",
-    "permissions": [
-        "activeTab",
-        "tabs",
-        "contextMenus",
-        "scripting",
-        "background"
-    ],
-    "host_permissions": [
-        "*://*.freshdesk.com/*"
-    ],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": {
-            "16": "icon.png",
-            "48": "icon.png",
-            "128": "icon.png"
-        }
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "content.js"
-            ],
-            "css": [
-                "styles.css"
-            ]
-        }
-    ]
+	"manifest_version": 3,
+	"name": "Smart Rewrite",
+	"version": "1.0",
+	"permissions": [
+		"activeTab",
+		"tabs",
+		"contextMenus",
+		"scripting",
+		"background"
+	],
+	"host_permissions": [
+		"*://*.freshdesk.com/*"
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"16": "icons/icon16.png",
+			"24": "icons/icon24.png",
+			"32": "icons/icon32.png",
+			"48": "icons/icon48.png",
+			"128": "icons/icon128.png"
+		}
+	},
+	"icons": {
+		"16": "icons/icon16.png",
+		"24": "icons/icon24.png",
+		"32": "icons/icon32.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png",
+		"440": "icons/icon440x280.png"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"content.js"
+			],
+			"css": [
+				"styles.css"
+			]
+		}
+	]
 }

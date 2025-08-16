@@ -1,18 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Text Rewriter</title>
-    <style>
-        /* Add your styles here */
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SmartRewrite - AI Text Enhancement</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Text Rewriter</h1>
-    <div id="rewrittenText"></div>
-    <button id="copyText">Copy Text</button>
-    <script src="popup.js"></script>
+	<!-- Complete redesign with modern AI-focused interface -->
+	<div class="popup-container">
+		<!-- Header Section -->
+		<div class="header">
+			<div class="logo-section">
+				<h1 class="app-title">SmartRewrite</h1>
+				<div class="ai-icon">✨</div>
+			</div>
+			<p class="tagline">AI-powered professional text enhancement</p>
+		</div>
+
+		<!-- Main Content -->
+		<div class="content">
+			<!-- Status Section -->
+			<div class="status-section" id="statusSection">
+				<div class="status-indicator">
+					<div class="pulse-dot"></div>
+					<span class="status-text">Ready to enhance your text</span>
+				</div>
+			</div>
+
+			<!-- Instructions -->
+			<div class="instructions">
+				<p>Select any text on the page and right-click to rewrite it professionally.</p>
+			</div>
+
+			<!-- Results Section -->
+			<div class="results-section" id="resultsSection" style="display: none;">
+				<div class="result-header">
+					<h3>Enhanced Text</h3>
+					<button class="copy-btn" id="copyText">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+							<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+						</svg>
+						Copy
+					</button>
+				</div>
+				<div class="rewritten-text" id="rewrittenText"></div>
+			</div>
+
+			<!-- Loading State -->
+			<div class="loading-section" id="loadingSection" style="display: none;">
+				<div class="ai-thinking">
+					<div class="thinking-dots">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<p>AI is enhancing your text...</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div class="footer">
+			<div class="powered-by">
+				<span>Powered by</span>
+				<strong>Grok AI</strong>
+			</div>
+		</div>
+	</div>
+
+	<script src="popup.js"></script>
 </body>
 
 </html>
