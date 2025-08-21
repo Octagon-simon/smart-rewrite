@@ -111,21 +111,3 @@ const handleRewrite = async (tab, text, translateToFrench) => {
 		}
 	});
 }
-
-//reusable function to send to backend
-// const sendToBackend = async (content, translateToFrench = false) => {
-// 	try {
-// 		const res = await fetch("https://smart-rewrite-backend.vercel.app/api/rewrite",
-// 			{
-// 				method: "POST",
-// 				headers: { "Content-Type": "application/json" },
-// 				body: JSON.stringify({ content, translateToFrench })
-// 			})
-// 			.then(r => r.json());
-
-// 		if (res?.success) return res.data.response;
-
-// 	} catch (err) {
-// 		throw err
-// 	}
-// }
