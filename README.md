@@ -8,13 +8,14 @@ Check out the backend here: https://github.com/Octagon-simon/smart-rewrite-backe
 
 ## ✨ Features
 
-- **Instant Text Rewriting**: Select any text on a webpage and rewrite it with AI
+- **Instant Text Rewriting**: Select any text on a webpage and rewrite it with AI by right-clicking or using the keyboard shortcut `CTRL + SHIFT + Y` (default) or `CMD + SHIFT + Y` (mac)
 - **Context Menu Integration**: Right-click selected text to access rewriting
+- **Dual Language Support**: Rewrite text professionally or translate to French instantly
 - **Professional Tone**: Transforms casual text into professional, polished content
 - **Powered by Grok AI**: Uses advanced AI for intelligent text transformation
 - **No External Websites**: Works directly on any webpage without redirects
 
-## 🚀 Installation
+## 🚀 Installation / Local Build
 
 ### For Users (Not live for general public yet!!!)
 
@@ -33,9 +34,11 @@ Check out the backend here: https://github.com/Octagon-simon/smart-rewrite-backe
 ## 📖 How to Use
 
 1. **Select text** on any webpage (emails, documents, social posts, etc.)
-2. **Right-click** and choose "Rewrite Text" from the context menu
+2. **Right-click** and choose "Rewrite Text" from the context menu. Then choose your preferred language.
 3. **Wait** for the AI to process and rewrite your text
 4. **See the result** - the original text is replaced with the professional version
+
+> If you have set a preferred language already, you can use the keyboard shortcut `CTRL + SHIFT + Y` (default) or `CMD + SHIFT + Y` (mac) to quickly rewrite the selected text.
 
 ## 🛠 Backend Setup
 
@@ -45,32 +48,7 @@ The extension requires a backend API for AI text processing.
 
 The extension is configured to use a deployed Vercel backend with Grok AI integration.
 
-### Option 2: Local Development
-
-1. **Clone the repository**
-   
-   https://github.com/Octagon-simon/smart-rewrite-backend
-
-
-2. **Install dependencies:**
-   ```bash
-    npm install
-   ```
-   
-3. **Set up environment variables:**
-    Create a `.env` file:
-   ```bash
-    XAI_API_KEY=your_xai_api_key_here
-   ```
-
-4. **Start the server:**
-   ```bash
-    npm start
-   ```
-
-5. **Update extension:** Change the API URL in `background.js` to `http://localhost:5000`
-
-### Option 3: Deploy to Vercel
+### Option 2: Deploy to Vercel
 
 1. **Push to GitHub** and connect to Vercel
 2. **Add environment variable** `XAI_API_KEY` in Vercel project settings or add the xAI grok integration to your vercel account for automatic api key provision.
@@ -80,6 +58,7 @@ The extension is configured to use a deployed Vercel backend with Grok AI integr
 ## 🔧 Technical Details
 
 ### Chrome Extension Structure
+
 - `manifest.json` - Extension configuration and permissions
 - `background.js` - Service worker handling API calls
 - `content.js` - Content script for text selection and replacement
@@ -87,6 +66,7 @@ The extension is configured to use a deployed Vercel backend with Grok AI integr
 - `styles.css` - Popup styling
 
 ### Backend API
+
 - **Framework**: Node.js serverless functions (Vercel compatible)
 - **AI Provider**: xAI Grok-4 model
 - **Endpoint**: `POST /api/rewrite` or `POST /rewrite`
@@ -94,7 +74,8 @@ The extension is configured to use a deployed Vercel backend with Grok AI integr
 
 ### API Usage
 
-**Request:**
+**Request (English):**
+
 ```json
 {
   "content": "hey can u send me that file asap"
@@ -102,11 +83,32 @@ The extension is configured to use a deployed Vercel backend with Grok AI integr
 ```
 
 **Sample Response:**
+
 ```json
 {
   "success": true,
   "data": {
     "response": "Could you please send me that file at your earliest convenience?"
+  }
+}
+```
+
+**Request (French):**
+
+```json
+{
+  "content": "hey can u send me that file asap",
+  "translateToFrench": true
+}
+```
+
+**Sample Response (French):**
+
+```json
+{
+  "success": true,
+  "data": {
+    "response": "Pourriez-vous m’envoyer ce fichier dès que possible, s’il vous plaît ?"
   }
 }
 ```
@@ -118,11 +120,13 @@ The extension is configured to use a deployed Vercel backend with Grok AI integr
 ## 📝 Development
 
 ### Local Testing
+
 1. Start the backend server
 2. Load the extension in Chrome
 3. Test on any webpage with selectable text
 
 ### Debugging
+
 - Check Chrome DevTools Console for extension logs
 - Monitor Network tab for API calls
 - Use `chrome://extensions/` to reload the extension
@@ -139,9 +143,26 @@ The extension is configured to use a deployed Vercel backend with Grok AI integr
 
 This project is licensed under the MIT License.
 
+## 💼 Commercial Use  
+
+The code is open source, but if you’d like to use it for commercial purposes, we’d love to hear from you.  
+Feel free to reach out via [email](mailto:ugorji757@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/simon-ugorji-57a6a41a3/).
+
+## 🎯 Why Choose SmartRewrite?
+
+**SmartRewrite stands out with these key advantages:**
+
+- **Instant Integration**: Works directly on any webpage without leaving your current context
+- **Context-Aware Rewriting**: Powered by Grok AI for intelligent, nuanced text transformation
+- **Privacy-Focused**: Your text is processed securely without storing personal data
+- **Lightning Fast**: Get professional rewrites in seconds, not minutes
+- **Dual Language Support**: Rewrite text professionally or translate to French instantly
+- **Developer-Friendly**: Open source with customizable backend options
+
 ## 🆘 Support
 
 If you encounter issues:
+
 1. Check that the backend is running and accessible
 2. Verify your API key is correctly set
 3. Ensure the extension has necessary permissions

@@ -22,7 +22,7 @@ function injectCSS() {
       .spinner {
         width: 50px;
         height: 50px;
-        border: 8px solid rgba(0, 0, 0, 0.1);
+        border: 8px solid rgb(42, 145, 107);
         border-top: 8px solid #000;
         border-radius: 50%;
         animation: spinner 1s linear infinite;
